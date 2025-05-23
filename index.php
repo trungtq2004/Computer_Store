@@ -23,7 +23,7 @@ include("includes/header.php");
 <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
     <a class="navbar-brand" href="index.php"> Computer Store </a>
     <div class="ms-auto">
-        <a href="cart.php" class="btn btn-outline-primary"> Giỏ hàng (<?php echo $totalItem; ?>)</a>
+        <a href="cart.php" class="btn btn-outline-primary">🛒 Giỏ hàng (<?php echo $totalItem; ?>)</a>
     </div>
 </nav>
 <div class="row">

@@ -27,8 +27,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
     } else {
         $_SESSION['cart'][$product_id] = $quantity;
     }
+    ob_start();
 
-    echo "<div class='alert alert-success mt-3'>✅ Đã thêm vào giỏ hàng!</div>";
+    echo "<div class='alert alert-success mt-3 d-flex justify-content-between align-items-start' id='cartAlert'>";
+    echo "<div>";
+    echo "<strong> Đẫ thêm sản phẩm vào giỏ hàng </strong><br>";
+    echo "<ul>";
+    foreach ($_SESSION['cart'] as $pid => $qty) {
+       $p = $conn->query("SELECT name FROM products WHERE id = $pid") -> fetch_assoc();
+       echo "<li>{$p['name']} : $qty cái </li>";
+    }
+
+    echo "</ul>";
+    echo "</div>";
+    echo "<a href='cart.php' class='btn btn-sm btn-light ms-3 mt-2'>🛒 Giỏ hàng </a>";
+    echo "</div>";
+    ob_end_flush();    
 }
 ?>
 
@@ -68,5 +82,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
             </div>
         </div>
     </div>
+
+    <script>
+        setTimeout(() => {
+            const alertBox = document.getElementById('cartAlert');
+            if(alertBox){
+                alertBox.style.transition = "opacity 0.5s ease";
+                alertBox.style.opacity = 0;
+                setTimeout(() => alertBox.remove(), 500);
+            }
+        },5000);
+    </script>
+
 </body>
 </html>

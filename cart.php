@@ -36,7 +36,8 @@ if (!empty($cart)) {
    <div class="container py-4">
     <h2>Giỏ hàng của tôi</h2>
     <?php if(empty($cart)){ ?>
-        <p> Giỏ hàng trống </p>
+        <div class="alert alert-warning">Giỏ hàng trống.</div>
+        <a href="index.php" class="btn btn-primary"> <- Quay về trang chủ</a>
     <?php }else { ?>
           <form method='post' action='cart.php'>
         <table class="table table-bordered align-middle">
@@ -47,6 +48,7 @@ if (!empty($cart)) {
                     <th>Giá</th>
                     <th>Số lượng</th>
                     <th>Tổng</th>
+                    <th>Xóa</th>
                 </tr>
             </thead>
             <tbody>
@@ -67,7 +69,9 @@ if (!empty($cart)) {
                             <td> <input type='number' name='quantity[{$product['id']}]'
                              value='$qty' min='1' class='form-control' style='width:80px;'> </td>
                             <td>" . number_format($subtotal) . " VND </td>
-                           
+                            <td>
+                            <a href='remove_cart.php?id={$product['id']};' class='btn btn-sm btn-danger'>X</a>
+                            </td>
                         </tr> 
                     ";  
                 }
@@ -78,6 +82,7 @@ if (!empty($cart)) {
                     <th colspan="4">Tổng cộng</th>
                     <th><?php echo number_format($total); ?> VND</th>
                 </tr>
+               
             </tbody>
         </table>
             <div class="d-flex justify-content-between mt-3">
