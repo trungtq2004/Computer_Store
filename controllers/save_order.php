@@ -51,6 +51,5 @@ $stmt->close();
 unset($_SESSION['cart']);
 
 // Chuyển tới trang xác nhận
-header("Location: order_success.php?order_id=$order_id");
+header("Location: ../views/order_success.php?order_id=$order_id");
 exit;
-?>

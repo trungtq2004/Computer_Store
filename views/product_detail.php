@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
     }
 
     $_SESSION['success_message'] = "Đã thêm sản phẩm vào giỏ hàng";
-    header("Location: product_detail.php?id=" . $product_id);
+    header("Location: ../views/product_detail.php?id=" . $product_id);
     exit();
 }
 ?>
@@ -42,15 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> <?php echo $product['name']; ?> </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
     <div class="container py-4">
-        <a class="btn btn-secondary mb-3" href="index.php"><- Quay lại </a>
+        <a class="btn btn-secondary mb-3" href="../views/index.php"><- Quay lại </a>
                 <div class="row">
                     <div class="col-md-5">
-                        <img class="img-fluid" src="assets/images/<?php echo $product['image']; ?> " alt="<?php echo $product['name']; ?>">
+                        <img class="img-fluid" src="../assets/images/<?php echo $product['image']; ?> " alt="<?php echo $product['name']; ?>">
                     </div>
                     <div class="col-md-7">
                         <h2><?php echo $product['name']; ?></h2>
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_to_cart'])) {
                 }
                 ?>
             </ul>
-            <a href="cart.php" class="btn btn-light ms-3 mt-2">Xem giỏ hàng</a>
+            <a href="../views/cart.php" class="btn btn-light ms-3 mt-2">Xem giỏ hàng</a>
         </div>
 
         <?php unset($_SESSION['success_message']); ?>

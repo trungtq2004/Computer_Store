@@ -30,9 +30,9 @@ if (!empty($cart)) {
         <h2>Giỏ hàng của tôi</h2>
         <?php if (empty($cart)) { ?>
             <div class="alert alert-warning">Giỏ hàng trống.</div>
-            <a href="index.php" class="btn btn-primary"> <- Quay về trang chủ</a>
+            <a href="../views/index.php" class="btn btn-primary"> <- Quay về trang chủ</a>
                 <?php } else { ?>
-                    <form method='post' action='cart.php'>
+                    <form method='post' action='../views/cart.php'>
                         <table class="table table-bordered align-middle">
                             <thead class="table-light">
                                 <tr>
@@ -51,7 +51,7 @@ if (!empty($cart)) {
                                     $qty = $cart[$product['id']];
                                     $subtotal = $qty * $product['price'];
                                     $total += $subtotal;
-                                    $image = "assets/images/" . $product['image'];
+                                    $image = "../assets/images/" . $product['image'];
 
                                     echo "
                       
@@ -66,7 +66,7 @@ if (!empty($cart)) {
                                     style='width:80px;'> </td>
                             <td>    " . number_format($subtotal) . " VND </td>
                             <td>
-                                    <a href='remove_cart.php?id={$product['id']}'
+                                    <a href='../controllers/remove_cart.php?id={$product['id']}'
                                     class='btn btn-sm btn-danger'
                                     onclick=\"return confirm('Bạn có chắc muốn xóa sản phẩm này không?');\"> X </a>
                             </td>
@@ -87,7 +87,7 @@ if (!empty($cart)) {
                                             const qty = parseInt(this.value);
 
                                             // Gửi AJAX để cập nhật session
-                                            fetch('update_cart.php', {
+                                            fetch('../controllers/update_cart.php', {
                                                     method: 'POST',
                                                     headers: {
                                                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -122,8 +122,8 @@ if (!empty($cart)) {
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-between mt-3">
-                            <a href="index.php" class="btn btn-secondary">← Tiếp tục mua hàng</a>
-                            <button type="submit" formaction="checkout.php" class="btn btn-success">Thanh toán</button>
+                            <a href="../views/index.php" class="btn btn-secondary">← Tiếp tục mua hàng</a>
+                            <button type="submit" formaction="../views/checkout.php" class="btn btn-success">Thanh toán</button>
                         </div>
                     <?php    }  ?>
     </div>
